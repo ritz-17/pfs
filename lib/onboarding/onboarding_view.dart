@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:police_feedback/homeScreen.dart';
+import 'package:police_feedback/welcomeScreen.dart';
 import 'package:police_feedback/homef.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -100,7 +100,7 @@ class _OnboardingViewState extends State<OnboardingView> {
             //After we press get started button this onboarding value become true
             // same key
             if(!mounted)return;
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>homeScreen()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>welcomeScreen()));
           },
           child: const Text("Get started",style: TextStyle(color: Colors.white),)),
     );

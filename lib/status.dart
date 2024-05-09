@@ -23,31 +23,55 @@ class _StatusFromState extends State<StatusFrom> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 80,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        flexibleSpace: ClipPath( // Assuming your custom clipper for the shape
+          child: Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:  EdgeInsets.all(8),
+                child: Container(
+                  padding:EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0,),
+                  child:  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Check Application Status',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(left: 15.0, right: 15.0),
           child: Column(
-        
             children:[
-              SizedBox(height: 40,),
-              Container(
-                height: 70,
-                child: const Text('Check Application Satus',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30,
-                  ),
-                ),
-              ),
-              SizedBox(height: 5,),
+              SizedBox(height: 20,),
               Container(
                 height: 550,
                 decoration: BoxDecoration(
-                    color: Color(0xFFDFF5FF),
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(10.0),
-                    border: Border.all(width: 5, color: Color(0xFFB9B9B9))
+                    border: Border.all(width: 5, color: Colors.white)
                 ),
                 padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20, bottom: 20),
                 child: ListView(

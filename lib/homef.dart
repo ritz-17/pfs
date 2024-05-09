@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:police_feedback/customButton.dart';
 import 'package:police_feedback/fir.dart';
-import 'package:police_feedback/theme/app_decoration.dart';
-import 'package:police_feedback/theme/custom_text_style.dart';
-import 'package:police_feedback/theme/theme_helper.dart';
-import 'package:police_feedback/widgets/custom_outlined_button.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -20,28 +17,37 @@ class _homeState extends State<home> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        toolbarHeight: 100,
+        toolbarHeight: 80,
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        flexibleSpace: ClipPath(
-          clipper: Customshape(), // Assuming your custom clipper for the shape
+        flexibleSpace: ClipPath(// Assuming your custom clipper for the shape
           child: Stack( // Use a Stack to position elements on top of each other
             children: [
               SizedBox(height: 10,),
               Container(
-                height: 150,
                 width: MediaQuery.of(context).size.width,
-                color: Colors.blue,
-                child: const Align(
-                  alignment: Alignment.topCenter,
-                  child: Column(
-                      children:[
-                        SizedBox(height: 30,),
-                        Text(
-                          'Police Feedback System',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 28),
-                        ),
-                      ]
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: Alignment.center,
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0,),
+                    child:  Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Police Feedback System',
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -52,6 +58,7 @@ class _homeState extends State<home> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+
 
             const SizedBox(height: 30,),
             Container(
@@ -75,16 +82,16 @@ class _homeState extends State<home> {
 
   Widget _buildTwelve(BuildContext context) {
     return Container(
+      height: 150,
       margin: const EdgeInsets.symmetric(horizontal: 20),
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 22),
-      decoration: AppDecoration.outlineGreenA.copyWith(
-        borderRadius: BorderRadiusStyle.roundedBorder12,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(width: 5, color: Color(0xFFDFF5FF)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const Divider(indent: 5),
-          const SizedBox(height: 25),
           const Align(
             alignment: Alignment.center,
             child: Text('File your FIR here',
@@ -95,15 +102,12 @@ class _homeState extends State<home> {
             ),
             ),
           ),
-          const Divider(indent: 5),
-          const SizedBox(height: 25),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
-                child: CustomOutlinedButton(
+                child: CustomButton(
                   text: "Apply",
-                  margin: const EdgeInsets.only(right: 11),
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -112,7 +116,6 @@ class _homeState extends State<home> {
                   },
                 ),
               ),
-
             ],
           ),
         ],

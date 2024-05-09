@@ -11,77 +11,73 @@ class _FeedbackPageState extends State<FeedbackPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        toolbarHeight: 80,
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+        flexibleSpace: ClipPath( // Assuming your custom clipper for the shape
+          child: Stack(
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width,
+                decoration: const BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0,),
+                  child: Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      'Police Feedback System',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 28, color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Stack(
         children: [
-          AppBar(
-            toolbarHeight: 100,
-            backgroundColor: Colors.transparent,
-            elevation: 0.0,
-            flexibleSpace: ClipPath(
-              clipper: Customshape(), // Assuming your custom clipper for the shape
-              child: Stack(
-                children: [
-                  Container(
-                    height: 150,
-                    width: MediaQuery.of(context).size.width,
-                    color: Colors.blue,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0,),
-                      child: const Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Police Feedback System',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 28),
-                          ),
-                        ],
-                      ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children:[
+                const SizedBox(height: 20,),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Member',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF797C7B),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-
-          Positioned(
-            top: 130,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children:[
-                  const SizedBox(height: 20,),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Member',
-                      style: TextStyle(
-                        fontSize: 24,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xFF797C7B),
-                      ),
-                    ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (BuildContext context, int index) {
+                      return UserListItem(
+                        name: 'Ashish Kumar',
+                        description: 'Description of the member goes here. It should be a bit long to demonstrate the overflow behavior.',
+                      );
+                    },
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        return UserListItem(
-                          name: 'Ashish Kumar',
-                          description: 'Description of the member goes here. It should be a bit long to demonstrate the overflow behavior.',
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],

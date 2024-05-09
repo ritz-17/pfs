@@ -10,8 +10,9 @@ class EventPath extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFDFF5FF),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(10.0),
+          border: Border.all(width: 5, color: Color(0xFFDFF5FF))
       ),
       padding: EdgeInsets.all(25.0),
       margin: EdgeInsets.all(20.0),
